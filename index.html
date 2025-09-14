@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Keren</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .kalkulator {
+      background-color: #ffffffcc;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .kalkulator img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      padding: 10px;
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      text-align: right;
+      background-color: #f0f0f0;
+    }
+
+    .tombol {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1em;
+      border: none;
+border-radius: 10px;
+      background-color: #4a90e2;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #357ABD;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="kalkulator">
+    <img src="https://img.icons8.com/emoji/96/calculator-emoji.png" alt="Kalkulator">
+    <input type="text" id="layar" readonly>
+    <div class="tombol">
+      <button onclick="tambahAngka('7')">7</button>
+      <button onclick="tambahAngka('8')">8</button>
+      <button onclick="tambahAngka('9')">9</button>
+      <button onclick="tambahAngka('/')">÷</button>
+      
+      <button onclick="tambahAngka('4')">4</button>
+      <button onclick="tambahAngka('5')">5</button>
+      <button onclick="tambahAngka('6')">6</button>
+      <button onclick="tambahAngka('*')">×</button>
+      
+      <button onclick="tambahAngka('1')">1</button>
+      <button onclick="tambahAngka('2')">2</button>
+      <button onclick="tambahAngka('3')">3</button>
+      <button onclick="tambahAngka('-')">−</button>
+      <button onclick="hapus()">C</button>
+      <button onclick="tambahAngka('0')">0</button>
+      <button onclick="hitung()">=</button>
+      <button onclick="tambahAngka('+')">+</button>
+    </div>
+  </div>
+
+  <script>
+    function tambahAngka(angka) {
+      document.getElementById("layar").value += angka;
+    }
+
+    function hitung() {
+      try {
+        let hasil = eval(document.getElementById("layar").value);
+        document.getElementById("layar").value = hasil;
+      } catch {
+        document.getElementById("layar").value = "Error";
+      }
+    }
+
+    function hapus() {
+      document.getElementById("layar").value = "";
+    }
+  </script>
+</body>
+</html>
